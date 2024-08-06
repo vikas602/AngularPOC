@@ -1,0 +1,80 @@
+<div class="main">
+    <div class="container">
+      <h2 class="heading">Sign Up</h2>
+      <form [formGroup]="signupForm" method="post"  (submit)="onSubmit()">
+        <div class="row">
+          <mat-form-field appearance="outline" class="input">
+            <mat-label>First Name</mat-label>
+            <input matInput formControlName="firstName" />
+            <mat-error class="error" *ngIf="signupForm.get('firstName')?.hasError('required')">
+              First Name is required.
+            </mat-error>
+          </mat-form-field>
+  
+          <mat-form-field appearance="outline" class="input">
+            <mat-label>Last Name</mat-label>
+            <input matInput formControlName="lastName" />
+            <mat-error class="error" *ngIf="signupForm.get('lastName')?.hasError('required')">
+              Last Name is required.
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="row">
+          <mat-form-field appearance="outline" class="input">
+            <mat-label>Gender</mat-label>
+            <mat-select formControlName="gender">
+              <mat-option value="Male">Male</mat-option>
+              <mat-option value="Female">Female</mat-option>
+              <mat-option value="Others">Others</mat-option>
+            </mat-select>
+            <mat-error class="error" *ngIf="signupForm.get('gender')?.hasError('required')">
+              Gender is required.
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field appearance="outline" class="input">
+            <mat-label>Age</mat-label>
+            <input matInput formControlName="age" type="number" />
+            <mat-error class="error" *ngIf="signupForm.get('age')?.hasError('required')">
+              Age is required.
+            </mat-error>
+            <mat-error class="error" *ngIf="signupForm.get('age')?.hasError('min')">
+              Age must be at least 0.
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="row">
+          <mat-form-field appearance="outline" class="input">
+            <mat-label>Email</mat-label>
+            <input matInput formControlName="email" type="email" />
+            <mat-error class="error" *ngIf="signupForm.get('email')?.hasError('required')">
+              Email is required.
+            </mat-error>
+            <mat-error class="error" *ngIf="signupForm.get('email')?.hasError('email')">
+              Invalid email address.
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field appearance="outline" class="input">
+            <mat-label>Address</mat-label>
+            <input matInput formControlName="address" />
+          </mat-form-field>
+        </div>
+        <div class="lastrow">
+          <mat-form-field appearance="outline" class="input">
+            <mat-label>Phone No.</mat-label>
+            <input matInput formControlName="phoneNo" type="tel" />
+            <mat-error class="error" *ngIf="signupForm.get('phoneNo')?.hasError('required')">
+              Phone number is required.
+            </mat-error>
+           
+          </mat-form-field>
+        </div>
+        <div class="button">
+          
+          <button mat-raised-button class="btn" onclick="onSubmit()"  [disabled]="signupForm.invalid" >Submit</button>
+        </div>
+        
+      </form>
+      <button mat-raised-button class="btn" [routerLink]="['users']"  >Show Users</button>
+    </div>
+  </div>
+  
